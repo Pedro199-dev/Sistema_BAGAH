@@ -1,10 +1,11 @@
 from django.shortcuts import render
-
+from products.models import Product
 # Create your views here.
 
 
 def index(request):
-    return render(request, "core/index.html")
+    products = Product.objects.all()
+    return render(request, "core/index.html", {'products':products})
 
 def about(request):
     return render(request, "core/about.html")
@@ -15,5 +16,4 @@ def events(request):
 def services(request):
     return render(request, "core/services.html")
 
-def products(request):
-    return render(request, "core/products.html")
+
