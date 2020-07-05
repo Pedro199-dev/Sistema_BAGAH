@@ -3,6 +3,16 @@
 <head>
 <title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
 {% load static %}
+
+ <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
+
+
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -56,15 +66,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </fieldset>
             </form>
 		</div>
+		
 		<div class="w3l_header_right">
 			<ul>
+			
 				<li class="dropdown profile_details_drop">
+			
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
+						{% if not request.user.is_authenticated %}
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="login.html">Ingresar</a></li> 
+								<li><a href="login.html">Registro</a></li>
+								{% else %}
+							<ul class="dropdown-menu drp-mnu">
+								<li><a href="{% url 'messenger:list' %}">Mensajes</a></li>
 								<li><a href="login.html">Salir</a></li>
+								</ul>
+								{% endif %}
 							</ul>
 						</div>                  
 					</div>	
@@ -101,7 +121,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="{% url 'events' %}">Eventos</a><i>/</i></li>
 					<li><a href="{% url 'about' %}">Acerca de</a><i>/</i></li>
 					<li><a href="{% url 'products' %}">Productos</a><i>/</i></li>
-					<li><a href="{% url 'services' %}">Servicios</a></li>
+					<li><a href="{% url 'services' %}">Servicios</a><i>/</i></li>
+					<li><a href="{% url 'pages:pages' %}">Noticias</a><i>/</i></li>
+				</ul>
 				</ul>
 			</div>
 			<div class="w3ls_logo_products_left1">
@@ -124,6 +146,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li>Eventos</li>
 				{% elif request.path == '/products/'%}
 				<li>Productos</li>
+				{% elif request.path == '/pages/'%}
+				<li>Noticias</li>
 				{% elif request.path == '/about' %}
 				<li>Acerca de...</li>
 				{% elif request.path == '/services'%}
@@ -139,6 +163,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block services %}{% endblock services %}
 		{% block events %}{% endblock events %}
 		{% block products %}{% endblock products %}
+		{% block content1 %}{% endblock content1 %}
+		{% block content2 %}{% endblock content2 %}
+		{% block content3 %}{% endblock content3 %}
+		{% block content4 %}{% endblock content4 %}
+		{% block content5 %}{% endblock content5 %}
+		{% block content6 %}{% endblock content6 %}
+		{% block content %}{% endblock content %}
+		{% block content7 %}{% endblock content7 %}
+		{% block content8 %}{% endblock content8 %}
+		{% block content9 %}{% endblock content9 %}
 <!-- newsletter -->
 	<div class="newsletter">
 		<div class="container">
@@ -226,6 +260,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
+
+<script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'core/js/main.js' %}"></script>
 <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
 <script>
 $(document).ready(function(){
