@@ -1,38 +1,61 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block title %}Iniciar sesion{% endblock %}
-{% block content %}
-  {% if request.user.is_authenticated %}
-    <script>window.location.href = '/accounts/profile/'; </script>
-  {% endif %}
-<style>.errorlist{color:red;}</style>
-<main role="main">
-  <div class="container">
-    <div class="row mt-3">
-      <div class="col-md-9 mx-auto mb-5">
-        {% if 'register' in request.GET %}
+{% block login %}
+<!-- login -->
+		<div class="w3_login">
+    {% if 'register' in request.GET %}
           <p style="color:green;">Usuario registrado correctamente, ya puedes identificarte.</p>
         {% endif %}
-        <form action="" method="post">{% csrf_token %}
-          <h3 class="mb-4">Iniciar sesion</h3>
-          {% if form.non_field_errors %}
+			<h3>Ingresa o registrate</h3>
+      {% if form.non_field_errors %}
             <p style="color:red">Usuario o contraseña incorrectos prueba de nuevo.</p>
           {% endif %}
-          <p>
-            <input type="text" name="username" autofocus maxlength="254" required
+			<div class="w3_login_module">
+				<div class="module form-module">
+				  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+					<div class="tooltip">Click aqui</div>
+				  </div>
+				  <div class="form">
+          <h3 class="mb-4">Ingresar</h3>
+					<form action="" method="post">{% csrf_token %}
+					  <input type="text" name="username" autofocus maxlength="254" required
               id="id_username" class="form-control" placeholder="Nombre de usuario"/>
-          </p>
-          <p>
-            <input type="password" name="password" required
+					  <input type="password" name="password" required
               id="id_password" class="form-control" placeholder="Contraseña"/>
-          </p>
-          <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
-        </form>
-        <p>
-          ¿Ha olvidado su clave? Puede restaurarla <a href="{% url 'password_reset' %}">aqui</a>.
-        </p>
-      </div>
-    </div>
-  </div>
-</main>
+					  <input type="submit" class="btn btn-primary btn-block" value="Acceder">
+					</form>
+				  </div>
+				  <div class="form">
+					<h2>Crear cuenta</h2>
+					<form action="#" method="post">
+					  <input type="text" name="Username" placeholder="Username" required=" ">
+					  <input type="password" name="Password" placeholder="Password" required=" ">
+					  <input type="email" name="Email" placeholder="Email Address" required=" ">
+					  <input type="text" name="Phone" placeholder="Phone Number" required=" ">
+					  <input type="submit" value="Register">
+					</form>
+				  </div>
+				  <div class="cta"><a href="{% url 'password_reset' %}">¿Ha olvidado su clave?</a></div>
+				</div>
+			</div>
+			<script>
+				$('.toggle').click(function(){
+				  // Switches the Icon
+				  $(this).children('i').toggleClass('fa-pencil');
+				  // Switches the forms  
+				  $('.form').animate({
+					height: "toggle",
+					'padding-top': 'toggle',
+					'padding-bottom': 'toggle',
+					opacity: "toggle"
+				  }, "slow");
+				});
+			</script>
+		</div>
+<!-- //login -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
 {% endblock %}
+

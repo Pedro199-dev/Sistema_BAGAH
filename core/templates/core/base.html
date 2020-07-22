@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Grocery Store a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+{% if  request.path == '/events'%}
+				<title>Bagáh | Eventos</title>
+				{% elif request.path == '/'%}
+				<title>Bagáh | Inicio</title>
+				{% elif request.path == '/products/'%}
+				<title>Bagáh | Productos</title>
+				{% elif request.path == '/pages/'%}
+				<title>Bagáh | Noticias</title>
+				{% elif request.path == '/about' %}
+				<title>Bagáh | Acerca de</title>
+				{% elif request.path == '/services'%}
+				<title>Bagáh | Servicios</title>
+				{% endif %}
 {% load static %}
 
- <!-- Fuentes -->
+<!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
     <!-- Estilos -->
@@ -77,12 +89,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3ls_vegetables">
 						{% if not request.user.is_authenticated %}
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="login.html">Ingresar</a></li> 
-								<li><a href="login.html">Registro</a></li>
+								<li><a href="{% url 'login' %}">Ingresar</a></li> 
+								<li><a href="{% url 'signup' %}">Registro</a></li>
 								{% else %}
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="{% url 'messenger:list' %}">Mensajes</a></li>
-								<li><a href="login.html">Salir</a></li>
+								<li><a href="{% url 'logout' %}">Salir</a></li>
 								</ul>
 								{% endif %}
 							</ul>
@@ -114,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="logo_products">
 		<div class="container">
 			<div class="w3ls_logo_products_left">
-				<h1><a href="{% url 'index' %}"><span>Grocery</span> Store</a></h1>
+				<a href="{% url 'index' %}"><img class="img-responsive" src="{% static 'core/images/bagahlogo.jpg' %}" width="250px" height="100px"/></a>
 			</div>
 			<div class="w3ls_logo_products_left1">
 				<ul class="special_items">
@@ -129,7 +141,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3ls_logo_products_left1">
 				<ul class="phone_email">
 					<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234 567</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:store@grocery.com">store@grocery.com</a></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:bagah@gmail.com">bagah@gmail.com</a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
@@ -144,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{% url 'index' %}">Inicio</a><span>|</span></li>
 				{% if  request.path == '/events'%}
 				<li>Eventos</li>
-				{% elif request.path == '/products/'%}
+				{% elif request.path == '/products/' or '<int:pk>/products/'%}
 				<li>Productos</li>
 				{% elif request.path == '/pages/'%}
 				<li>Noticias</li>
@@ -162,14 +174,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block about %}{% endblock about %}
 		{% block services %}{% endblock services %}
 		{% block events %}{% endblock events %}
+		{% block login %}{% endblock login %}
+		{% block register %}{% endblock register %}
 		{% block products %}{% endblock products %}
+		{% block profile %}{% endblock profile %}
 		{% block content1 %}{% endblock content1 %}
 		{% block content2 %}{% endblock content2 %}
 		{% block content3 %}{% endblock content3 %}
 		{% block content4 %}{% endblock content4 %}
 		{% block content5 %}{% endblock content5 %}
 		{% block content6 %}{% endblock content6 %}
-		{% block content %}{% endblock content %}
 		{% block content7 %}{% endblock content7 %}
 		{% block content8 %}{% endblock content8 %}
 		{% block content9 %}{% endblock content9 %}
@@ -193,68 +207,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer">
 		<div class="container">
 			<div class="col-md-3 w3_footer_grid">
-				<h3>information</h3>
+				<h3>información</h3>
 				<ul class="w3_footer_grid_list">
 					<li><a href="{% url 'events' %}">Eventos</a></li>
 					<li><a href="{% url 'about' %}">Acerca de...</a></li>
 					<li><a href="{% url 'products' %}">Productos</a></li>
 					<li><a href="{% url 'services' %}">Servicios</a></li>
-					<li><a href="short-codes.html">Short Codes</a></li>
+					<!--<li><a href="short-codes.html">Short Codes</a></li>-->
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
-				<h3>policy info</h3>
+				<h3>información de politica</h3>
 				<ul class="w3_footer_grid_list">
-					<li><a href="faqs.html">FAQ</a></li>
-					<li><a href="privacy.html">privacy policy</a></li>
-					<li><a href="privacy.html">terms of use</a></li>
+					<!--<li><a href="faqs.html">FAQ</a></li>-->
+					<li><a href="privacy.html">politicas de privacidad</a></li>
+					<li><a href="privacy.html">terminos de uso</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
-				<h3>what in stores</h3>
-				<ul class="w3_footer_grid_list">
-					<li><a href="pet.html">Pet Food</a></li>
-					<li><a href="frozen.html">Frozen Snacks</a></li>
-					<li><a href="kitchen.html">Kitchen</a></li>
-					<li><a href="products.html">Branded Foods</a></li>
-					<li><a href="household.html">Households</a></li>
-				</ul>
+				<div class="w3_footer_grid_bottom">
+					<h5>conectate con nosotros</h5>
+					<ul class="agileits_social_icons">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-3 w3_footer_grid">
-				<h3>twitter posts</h3>
-				<ul class="w3_footer_grid_list1">
-					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>01 day ago</i><span>Non numquam <a href="#">http://sd.ds/13jklf#</a>
-						eius modi tempora incidunt ut labore et
-						<a href="#">http://sd.ds/1389kjklf#</a>quo nulla.</span></li>
-					<li><label class="fa fa-twitter" aria-hidden="true"></label><i>02 day ago</i><span>Con numquam <a href="#">http://fd.uf/56hfg#</a>
-						eius modi tempora incidunt ut labore et
-						<a href="#">http://fd.uf/56hfg#</a>quo nulla.</span></li>
-				</ul>
+					<div class="w3_footer_grid_bottom">
+						<h4>pago 100% seguro</h4>
+						<img src="{% static 'core/images/card.png' %}" alt=" " class="img-responsive" />
+					</div>
+
 			</div>
 			<div class="clearfix"> </div>
 			<div class="agile_footer_grids">
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h4>100% secure payments</h4>
-						<img src="{% static 'core/images/card.png' %}" alt=" " class="img-responsive" />
-					</div>
-				</div>
-				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h5>connect with us</h5>
-						<ul class="agileits_social_icons">
-							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="wthree_footer_copy">
-				<p>© 2016 Grocery Store. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+				<p>© 2020 Bagáh. Todos los derechos reservados</p>
 			</div>
 		</div>
 	</div>
@@ -262,8 +256,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Bootstrap Core JavaScript -->
 
 <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-      <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-      <script src="{% static 'core/js/main.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
 <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
 <script>
 $(document).ready(function(){

@@ -25,7 +25,7 @@ urlpatterns = [
     path('', include('core.urls')),
     #Paths de productos
     path('products/', include('products.urls')),
-     #Paths de paginas para las entradas
+    #Paths de paginas para las entradas
     path('pages/', include(pages_patterns)),
     #Paths del admin
     path('admin/', admin.site.urls),
@@ -33,7 +33,7 @@ urlpatterns = [
     path('accounts/', include('registration.urls')),
     # Paths de Messenger
     path('messenger/', include(messenger_patterns)),
-     # Paths de profiles
+    # Paths de profiles
     path('profiles/', include(profiles_patterns)),
     
 ]
