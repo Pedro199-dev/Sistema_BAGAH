@@ -10,10 +10,6 @@ def index(request):
 def about(request):
     return render(request, "core/about.html")
 
-def events(request):
-    return render(request, "core/events.html")
 
-def services(request):
-    return render(request, "core/services.html")
 
 

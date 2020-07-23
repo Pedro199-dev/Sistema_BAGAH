@@ -25,6 +25,10 @@ urlpatterns = [
     path('', include('core.urls')),
     #Paths de productos
     path('products/', include('products.urls')),
+    #Paths de blog
+    path('blog/', include('blog.urls')),
+    #Paths del servicios
+    path('services/', include('services.urls')),
     #Paths de paginas para las entradas
     path('pages/', include(pages_patterns)),
     #Paths del admin
