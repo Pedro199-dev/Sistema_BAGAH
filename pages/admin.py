@@ -3,11 +3,12 @@ from .models import Page
 
 # Register your models here.
 class PageAdmin(admin.ModelAdmin):
+    readonly_fields = ('created', 'updated')
     list_display = ('title', 'order')
 
-    class Media:
-        css = {
-            'all': ('pages/css/custom_ckeditor.css',)
-        }
+    #class Media:
+        #css = {
+            #'all': ('pages/css/custom_ckeditor.css',)
+        #}
 
 admin.site.register(Page, PageAdmin)

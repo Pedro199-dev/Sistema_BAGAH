@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% if  request.path == '/events'%}
-				<title>Bagáh | Eventos</title>
-				{% elif request.path == '/'%}
+{% if  request.path == '/'%}
 				<title>Bagáh | Inicio</title>
+				{% elif request.path == '/events'%}
+				<title>Bagáh | Eventos</title>
 				{% elif request.path == '/products/'%}
 				<title>Bagáh | Productos</title>
 				{% elif request.path == '/pages/'%}
@@ -134,7 +134,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="{% url 'about' %}">Acerca de</a><i>/</i></li>
 					<li><a href="{% url 'products' %}">Productos</a><i>/</i></li>
 					<li><a href="{% url 'services' %}">Servicios</a><i>/</i></li>
-					<!--<li><a href="{% url 'pages:pages' %}">Noticias</a><i>/</i></li>-->
 				</ul>
 				</ul>
 			</div>
@@ -178,6 +177,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block register %}{% endblock register %}
 		{% block products %}{% endblock products %}
 		{% block profile %}{% endblock profile %}
+		{% block privacy %}{% endblock privacy %}
 		{% block content1 %}{% endblock content1 %}
 		{% block content2 %}{% endblock content2 %}
 		{% block content3 %}{% endblock content3 %}
@@ -219,9 +219,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-3 w3_footer_grid">
 				<h3>información de politica</h3>
 				<ul class="w3_footer_grid_list">
-					<!--<li><a href="faqs.html">FAQ</a></li>-->
+					<!--<li><a href="faqs.html">FAQ</a></li>
 					<li><a href="privacy.html">politicas de privacidad</a></li>
-					<li><a href="privacy.html">terminos de uso</a></li>
+					<li><a href="privacy.html">terminos de uso</a></li>-->
+					{% load pages_extras %}
+					{% get_page_list as page_list %}
+					{% for page in page_list %}
+					<li><a href="{% url 'page' page.id page.title|slugify %}">{{page.title}}</a></li>
+					{% endfor %}
 				</ul>
 			</div>
 			<div class="col-md-3 w3_footer_grid">

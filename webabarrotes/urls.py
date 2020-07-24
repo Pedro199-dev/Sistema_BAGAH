@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from pages.urls import pages_patterns
+#from pages.urls import pages_patterns
 from messenger.urls import messenger_patterns
 from profiles.urls import profiles_patterns
 from django.urls import path, include
@@ -29,8 +29,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     #Paths del servicios
     path('services/', include('services.urls')),
-    #Paths de paginas para las entradas
-    path('pages/', include(pages_patterns)),
+    #Paths de paginas
+    path('page/', include('pages.urls')),
     #Paths del admin
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
