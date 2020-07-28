@@ -92,8 +92,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li><a href="{% url 'login' %}">Ingresar</a></li> 
 								<li><a href="{% url 'signup' %}">Registro</a></li>
 								{% else %}
+								
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="{% url 'messenger:list' %}">Mensajes</a></li>
+								<li><a href="{% url 'profile' %}">{{user}}</a></li>
+								<li><a href="{% url 'profiles:list' %}">Mensajes</a></li>
 								<li><a href="{% url 'logout' %}">Salir</a></li>
 								</ul>
 								{% endif %}
