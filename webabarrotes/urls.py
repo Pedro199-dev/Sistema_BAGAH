@@ -31,6 +31,8 @@ urlpatterns = [
     path('services/', include('services.urls')),
     #Paths de paginas
     path('page/', include('pages.urls')),
+    #Paths del contacto
+    path('contact/', include('contact.urls')),
     #Paths del admin
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -39,7 +41,6 @@ urlpatterns = [
     path('messenger/', include(messenger_patterns)),
     # Paths de profiles
     path('profiles/', include(profiles_patterns)),
-    
 ]
 
 if settings.DEBUG:

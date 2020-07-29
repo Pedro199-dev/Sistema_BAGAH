@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'core',
     'ckeditor',
+    'contact',
     'messenger',
     'profiles',
     'products.apps.ProductsConfig',
@@ -152,3 +153,9 @@ CKEDITOR_CONFIGS = {
 }
 
 LOGOUT_REDIRECT_URL = 'index'
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '4ad32081f0d02c'
+EMAIL_HOST_PASSWORD = '03ecb24ecc80ad'
+EMAIL_PORT = '2525'

@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header -->
 	<div class="agileits_header">
 		<div class="w3l_offers">
-			<a href="products.html">¡Ofertas especiales!</a>
+			<a href="{% url 'products' %}">¡Ofertas especiales!</a>
 		</div>
 		<div class="w3l_search">
 			<form action="#" method="post">
@@ -106,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 		<div class="w3l_header_right1">
-			<h2><a href="mail.html">Contactanos</a></h2>
+			<h2><a href="{% url 'contact' %}">Contactanos</a></h2>
 		</div>
 		<div class="clearfix"> </div>
 	</div>
@@ -165,6 +165,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li>Acerca de...</li>
 				{% elif request.path == '/services/'%}
 				<li>Servicios</li>
+				{% elif request.path == '/mail/'%}
+				<li>Envianos un mail</li>
 				{% endif %}
 			</ul>
 		</div>
@@ -180,6 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block products %}{% endblock products %}
 		{% block profile %}{% endblock profile %}
 		{% block privacy %}{% endblock privacy %}
+		{% block mail %}{% endblock mail %}
 		{% block content1 %}{% endblock content1 %}
 		{% block content2 %}{% endblock content2 %}
 		{% block content3 %}{% endblock content3 %}
