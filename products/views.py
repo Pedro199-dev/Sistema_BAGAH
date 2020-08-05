@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from carton.tests.models import ProductCart
+from .models import Product
 # Create your views here.
 def products(request):
-    products = ProductCart.objects.all()
+    products = Product.objects.all()
     return render(request, "products/products.html", {'products':products})
 
 def productsdetail(request):
-    products = ProductCart.objects.all()
+    products = Product.objects.all()
     return render(request, "products/single.html", {'products':products})
