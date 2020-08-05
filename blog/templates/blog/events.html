@@ -4,10 +4,10 @@
 <body>
 
 <!-- banner -->
-	<div class="banner">
-		<div class="w3l_banner_nav_left">
+	
+		<!--<div class="w3l_banner_nav_left">
 			<nav class="navbar nav_bottom">
-			<!-- Brand and toggle get grouped for better mobile display -->
+			Brand and toggle get grouped for better mobile display
 			<div class="navbar-header nav_2">
 				<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
 					<span class="sr-only">Toggle navigation</span>
@@ -16,7 +16,7 @@
 					<span class="icon-bar"></span>
 				</button>
 			</div> 
-			<!-- Collect the nav links, forms, and other content for toggling -->
+			Collect the nav links, forms, and other content for toggling 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
 						<li><a href="products.html">Branded Foods</a></li>
@@ -59,10 +59,10 @@
 						</li>
 						<li><a href="bread.html">Bread & Bakery</a></li>
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div> /.navbar-collapse
 			</nav>
-		</div>
-		<div class="w3l_banner_nav_right">
+		</div>-->
+		
 <!-- events -->
 		<div class="events">
 			<h3>Blog</h3>
@@ -76,7 +76,7 @@
 						</div>
 					</div>
 					<div class="col-md-8 events_bottom_left2">	
-						<img src="{{post.image.url}}" alt=" " class="img-responsive" />
+						<img src="{{post.image.url}}" alt=" " class="img-responsive" class="rounded"/>
 						<h4>{{post.title}}</h4>
 						<ul>
 							<li><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.published|time:"H:i"}}</li>
@@ -84,17 +84,13 @@
 						</ul>
 						<p>{{post.content}}</p>
 					</div>
-					<div class="clearfix"> </div>
 				</div>
 			{% endfor %}	
 				<div class="clearfix"> </div>
 			</div>
-		</div>
+		
 <!-- //events -->
 		</div>
 		<div class="clearfix"></div>
-	</div>
 <!-- //banner -->
-</body>
-</html>
 {% endblock %}

@@ -23,6 +23,8 @@ from django.conf import settings
 urlpatterns = [
     #Paths del core
     path('', include('core.urls')),
+    #Paths del carro
+    path('cart/', include('cart.urls')),
     #Paths de productos
     path('products/', include('products.urls')),
     #Paths de blog
