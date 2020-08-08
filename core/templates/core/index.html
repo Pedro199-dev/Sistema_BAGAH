@@ -128,7 +128,7 @@
 											<h4>{{product.price}}<span></span></h4>
 										</div>
 										<div class="snipcart-details top_brand_home_details">
-											<form action="{% url 'checkout' %}" method="post">
+											<form action="{% url 'checkout' %}" method="post">{% csrf_token %}
 												<fieldset>
 													<input type="hidden" name="cmd" value="_cart" />
 													<input type="hidden" name="add" value="1" />

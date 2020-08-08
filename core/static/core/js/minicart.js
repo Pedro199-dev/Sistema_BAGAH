@@ -1896,6 +1896,7 @@ module.exports = Cart;
 
 var mixin = require('./util/mixin');
 
+var href = "{% url 'checkout' arg1=12345 %}".replace(/12345/, tmp.toString());
 
 var defaults = module.exports = {
 
@@ -1903,7 +1904,7 @@ var defaults = module.exports = {
 
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action : 'checkout.html',
+    action : href,
 
     target: '',
 

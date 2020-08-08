@@ -72,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</form>-->
 		</div>
 		<div class="product_list_header">  
-			<form action="#" method="post" class="last">
+			<form action="{% url 'checkout' %}" method="post" class="last">{% csrf_token %}
                 <fieldset>
                     <input type="hidden" name="cmd" value="_cart" />
                     <input type="hidden" name="display" value="1" />
@@ -187,6 +187,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block mail %}{% endblock mail %}
 		{% block category %}{% endblock category %}
 		{% block productview %}{% endblock productview %}
+		{% block checkout %}{% endblock checkout %}
+		{% block payment %}{% endblock payment %}
 
 		{% block content1 %}{% endblock content1 %}
 		{% block content2 %}{% endblock content2 %}

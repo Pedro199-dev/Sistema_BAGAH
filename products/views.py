@@ -11,10 +11,12 @@ def productsdetail(request, product_id):
     return render(request, "products/single.html", {'products':products,'product':product})
 
 def checkout(request):
-    return render(request, "products/checkout.html")
+    products = Product.objects.all()
+    return render(request, "products/checkout.html", {'products':products})
 
 def payment(request):
-    return render(request, "products/payment.html")
+    products = Product.objects.all()
+    return render(request, "products/payment.html", {'products':products})
 
 def category(request, category_id):
     products = Product.objects.all()
