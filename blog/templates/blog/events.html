@@ -68,11 +68,41 @@
 			<h3>Blog</h3>
 			<div class="events-bottom">
 			{% for post in posts %}
-				<div class="col-md-6 events_bottom_left">
+				<div class="col-md-2 events_bottom_left1">
+						<div class="events_bottom_left1_grid">
+							<h4>{{post.published|date:" d "}}</h4>
+							<p>{{post.published|date:" M Y "}}</p>
+						</div>
+				</div>
+				<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
+					<div class="view view-tenth">
+						<img src="{{post.image.url}}" alt=" " class="img-responsive"/>
+						<div class="mask">
+							<h4>{{post.title}}</h4>
+						</div>
+					</div>
+					<div class="col-md-8 events_bottom_left2">	
+						
+						<h4>{{post.title}}</h4>
+						<ul>
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.published|time:"H:i"}}</li>
+							<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">{{post.author}}</a></li>
+						</ul>
+						<p>{{post.content}}</p>
+					</div>
+				</div>
+				<!--<div class="col-md-6 events_bottom_left">
 					<div class="col-md-4 events_bottom_left1">
 						<div class="events_bottom_left1_grid">
 							<h4>{{post.published|date:" d "}}</h4>
 							<p>{{post.published|date:" M Y "}}</p>
+						</div>
+					</div>
+					<div class="view view-tenth">
+						<img src="{{post.image.url}}" alt=" " class="img-responsive" />
+						<div class="mask">
+							<h4>Bagah expres</h4>
+							<p>A tu cervicio</p>
 						</div>
 					</div>
 					<div class="col-md-8 events_bottom_left2">	
@@ -84,7 +114,7 @@
 						</ul>
 						<p>{{post.content}}</p>
 					</div>
-				</div>
+				</div>-->
 			{% endfor %}	
 				<div class="clearfix"> </div>
 			</div>
