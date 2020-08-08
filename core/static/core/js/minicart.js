@@ -1903,7 +1903,7 @@ var defaults = module.exports = {
 
     parent: (typeof document !== 'undefined') ? document.body : null,
 
-    action: 'checkout.html',
+    action : 'checkout.html',
 
     target: '',
 
@@ -1917,7 +1917,7 @@ var defaults = module.exports = {
         button: 'Comprar <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal" />',
         subtotal: 'Total:',
         discount: 'Descuento:',
-        empty: 'Tu carro esta vacio'
+        empty: 'Tu carrito esta vacio'
     }
 
 };

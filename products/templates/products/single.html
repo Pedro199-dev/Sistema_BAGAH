@@ -1,13 +1,38 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% block productview %}
-
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div> 
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="{% url 'products' %}">Productos</a></li>
+						{% for product in products %}
+						{% for category in product.categorias.all %}
+						<li><a href="{% url 'category' category.id %}">{{category.name}}</a></li>
+						{% endfor %}
+						{% endfor %}
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
 		<div class="w3l_banner_nav_right">
 			<div class="w3l_banner_nav_right_banner3">
-				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
+				<h3>Siempre los mejores productos<span class="blink_me"></span></h3>
 			</div>
 			<div class="agileinfo_single">
-				<h5>>{{product.name}}</h5>
+				<h5>{{product.name}}</h5>
 				<div class="col-md-4 agileinfo_single_left">
 					<img id="example" src="{{product.image.url}}" alt=" " class="img-responsive" />
 				</div>
@@ -27,12 +52,12 @@
 						</span>
 					</div>
 					<div class="w3agile_description">
-						<h4>Description :</h4>
-						<p>{{product.id.description}} </p>
+						<h4>Descripción :</h4>
+						{{product.description}}
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4>{{product.id.price}} <span>$25.00</span></h4>
+							<h4>${{product.price}} <span></span></h4>
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
 							<form action="#" method="post">
@@ -46,7 +71,7 @@
 									<input type="hidden" name="currency_code" value="USD" />
 									<input type="hidden" name="return" value=" " />
 									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
+									<input type="submit" name="submit" value="Añadir al carrito" class="button" />
 								</fieldset>
 							</form>
 						</div>
@@ -58,4 +83,10 @@
 		<div class="clearfix"></div>
 	</div>
 <!-- //banner -->
+					<div class="clearfix"> </div>
+				</div>
+		</div>
+	</div>
+<!-- //brands -->
+
 {% endblock %}

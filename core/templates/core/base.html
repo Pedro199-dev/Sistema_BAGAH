@@ -3,16 +3,18 @@
 <head>
 {% if  request.path == '/'%}
 				<title>Bagáh | Inicio</title>
-				{% elif request.path == '/events'%}
-				<title>Bagáh | Eventos</title>
+				{% elif request.path == '/blog/'%}
+				<title>Bagáh | Blog</title>
 				{% elif request.path == '/products/'%}
 				<title>Bagáh | Productos</title>
 				{% elif request.path == '/pages/'%}
 				<title>Bagáh | Noticias</title>
-				{% elif request.path == '/about' %}
+				{% elif request.path == '/about/' %}
 				<title>Bagáh | Acerca de</title>
-				{% elif request.path == '/services'%}
+				{% elif request.path == '/services/'%}
 				<title>Bagáh | Servicios</title>
+				{% elif request.path == '/contact/'%}
+				<title>Bagáh | Contacto</title>
 				{% endif %}
 {% load static %}
 
@@ -64,10 +66,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<a href="{% url 'products' %}">¡Ofertas especiales!</a>
 		</div>
 		<div class="w3l_search">
-			<form action="#" method="post">
+			<!--<form action="#" method="post">
 				<input type="text" name="Product" value="Busca un producto..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
 				<input type="submit" value=" ">
-			</form>
+			</form>-->
 		</div>
 		<div class="product_list_header">  
 			<form action="#" method="post" class="last">
@@ -87,19 +89,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
 					<div class="mega-dropdown-menu">
 						<div class="w3ls_vegetables">
-						{% if not request.user.is_authenticated %}
-							<ul class="dropdown-menu drp-mnu">
-								<li><a href="{% url 'login' %}">Ingresar</a></li> 
-								<li><a href="{% url 'signup' %}">Registro</a></li>
-								{% else %}
-								
-							<ul class="dropdown-menu drp-mnu">
-								<li><a href="{% url 'profile' %}">{{user}}</a></li>
-								<li><a href="{% url 'profiles:list' %}">Mensajes</a></li>
-								<li><a href="{% url 'logout' %}">Salir</a></li>
+							{% if not request.user.is_authenticated %}
+								<ul class="dropdown-menu drp-mnu">
+									<li><a href="{% url 'login' %}">Ingresar</a></li> 
+									<li><a href="{% url 'signup' %}">Registro</a></li>
 								</ul>
-								{% endif %}
-							</ul>
+									{% else %}
+								<ul class="dropdown-menu drp-mnu">
+										<li><a href="{% url 'profile' %}">{{user}}</a></li>
+										<li><a href="{% url 'profiles:list' %}">Mensajes</a></li>
+										<li><a href="{% url 'logout' %}">Salir</a></li>
+								</ul>
+								
+							{% endif %}
 						</div>                  
 					</div>	
 				</li>
@@ -157,15 +159,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><i class="fa fa-home" aria-hidden="true"></i><a href="{% url 'index' %}">Inicio</a><span>|</span></li>
 				{% if  request.path == '/blog/'%}
 				<li>Blog</li>
-				{% elif request.path == '/products/'%}
+				{% elif request.path|slice:":10" == '/products/'%}
 				<li>Productos</li>
 				{% elif request.path == '/pages/'%}
 				<li>Noticias</li>
-				{% elif request.path == '/about' %}
+				{% elif request.path == '/about/' %}
 				<li>Acerca de...</li>
 				{% elif request.path == '/services/'%}
 				<li>Servicios</li>
-				{% elif request.path == '/mail/'%}
+				{% elif request.path == '/contact/'%}
 				<li>Envianos un mail</li>
 				{% endif %}
 			</ul>
@@ -183,6 +185,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block profile %}{% endblock profile %}
 		{% block privacy %}{% endblock privacy %}
 		{% block mail %}{% endblock mail %}
+		{% block category %}{% endblock category %}
+		{% block productview %}{% endblock productview %}
+
 		{% block content1 %}{% endblock content1 %}
 		{% block content2 %}{% endblock content2 %}
 		{% block content3 %}{% endblock content3 %}
@@ -194,18 +199,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		{% block content9 %}{% endblock content9 %}
 <!-- newsletter -->
 	<div class="newsletter">
-		<div class="container">
-			<div class="w3agile_newsletter_left">
-				<h3>Suscríbase a nuestro boletín</h3>
-			</div>
-			<div class="w3agile_newsletter_right">
-				<form action="#" method="post">
-					<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<input type="submit" value="Suscribir">
-				</form>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
 	</div>
 <!-- //newsletter -->
 <!-- footer -->

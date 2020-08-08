@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .forms import ContactForm
+from products.models import Product
 from django.core.mail import EmailMessage
 
 # Create your views here.
 
 def contact(request):
     contact_form = ContactForm()
+    products = Product.objects.all()
 
     if request.method == "POST":
         contact_form = ContactForm(data=request.POST)
@@ -31,4 +33,4 @@ def contact(request):
                 #algo no ha ido bien..
                 return redirect(reverse('contact')+"?fail")
 
-    return render(request, "contact/mail.html", {'form':contact_form})
+    return render(request, "contact/mail.html", {'products':products,'form':contact_form})

@@ -1,0 +1,72 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block category %}
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="{% url 'products' %}">Productos</a></li>
+						{% for product in products %}
+						{% for category in product.categorias.all %}
+						<li><a href="{% url 'category' category.id %}">{{category.name}}</a></li>
+						{% endfor %}
+						{% endfor %}
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+			<div class="w3l_banner_nav_right_banner4">
+				<h3>Siempre los mejores productos<span class="blink_me"></span></h3>
+			</div>
+			<div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
+				<h3>Productos disponibles</h3>
+				{% for product in category.get_posts.all %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'core/images/offer.png' %}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{% url 'productsdetail' product.id %}"><img src="{{product.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{product.name}}</p>
+											<h4>{{product.price}} <span>$5.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+											<form action="{% url 'checkout' %}" method="get">
+												<fieldset>
+													<input type="hidden" name="cmd" value="_cart" />
+													<input type="hidden" name="add" value="{{product.id}}" />
+													<input type="hidden" name="business" value=" " />
+													<input type="hidden" name="item_name" value="{{product.name}}" />
+													<input type="hidden" name="amount" value="{{product.price}}" />
+													<!--<input type="hidden" name="discount_amount" value="1.00" />-->
+													<input type="hidden" name="currency_code" value="USD" />
+													<input type="hidden" name="return" value=" " />
+													<input type="hidden" name="cancel_return" value=" " />
+													<input type="submit" name="submit" value="Añadir al carrito" class="button" />
+												</fieldset>
+											</form>
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+
+{% endblock %}

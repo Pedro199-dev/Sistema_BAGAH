@@ -18,45 +18,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav nav_1">
-						<li><a href="products.html">Branded Foods</a></li>
-						<li><a href="household.html">Households</a></li>
-						<li class="dropdown mega-dropdown active">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>				
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>	
-										<li><a href="vegetables.html">Vegetables</a></li>
-										<li><a href="vegetables.html">Fruits</a></li>
-									</ul>
-								</div>                  
-							</div>				
-						</li>
-						<li><a href="kitchen.html">Kitchen</a></li>
-						<li><a href="short-codes.html">Short Codes</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>
-										<li><a href="drinks.html">Soft Drinks</a></li>
-										<li><a href="drinks.html">Juices</a></li>
-									</ul>
-								</div>                  
-							</div>	
-						</li>
-						<li><a href="pet.html">Pet Food</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
-							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
-								<div class="w3ls_vegetables">
-									<ul>
-										<li><a href="frozen.html">Frozen Snacks</a></li>
-										<li><a href="frozen.html">Frozen Nonveg</a></li>
-									</ul>
-								</div>                  
-							</div>	
-						</li>
-						<li><a href="bread.html">Bread & Bakery</a></li>
+						<li><a href="{% url 'products' %}">Productos</a></li>
+						{% for product in products %}
+						{% for category in product.categorias.all %}
+						<li><a href="{% url 'category' category.id %}">{{category.name}}</a></li>
+						{% endfor %}
+						{% endfor %}
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</nav>
@@ -67,25 +34,25 @@
 					<ul class="slides">
 						<li>
 							<div class="w3l_banner_nav_right_banner">
-								<h3>Make your <span>food</span> with Spicy.</h3>
+								<h3>Nuevos   <span>productos</span> disponibles.</h3>
 								<div class="more">
-									<a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+									<a href="{% url 'products' %}" class="button--saqui button--round-l button--text-thick" data-text="Comprar ahora">Comprar ahora</a>
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="w3l_banner_nav_right_banner1">
-								<h3>Make your <span>food</span> with Spicy.</h3>
+								<h3>Nuevos   <span>productos</span> disponibles.</h3>
 								<div class="more">
-									<a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+									<a href="{% url 'products' %}" class="button--saqui button--round-l button--text-thick" data-text="Comprar ahora">Comprar ahora</a>
 								</div>
 							</div>
 						</li>
 						<li>
 							<div class="w3l_banner_nav_right_banner2">
-								<h3>upto <i>50%</i> off.</h3>
+								<h3>con <i>50%</i>de descuento.</h3>
 								<div class="more">
-									<a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
+									<a href="{% url 'products' %}" class="button--saqui button--round-l button--text-thick" data-text="Comprar ahora">Comprar ahora</a>
 								</div>
 							</div>
 						</li>
@@ -118,7 +85,7 @@
 					<div class="wthree_banner_bottom_left_grid">
 						<img src="{% static 'core/images/4.jpg' %}" alt=" " class="img-responsive" />
 						<div class="wthree_banner_bottom_left_grid_pos">
-							<h4>Discount Offer <span>25%</span></h4>
+							<h4>Oferta de descuento <span>25%</span></h4>
 						</div>
 					</div>
 				</div>
@@ -126,7 +93,7 @@
 					<div class="wthree_banner_bottom_left_grid">
 						<img src="{% static 'core/images/5.jpg' %}" alt=" " class="img-responsive" />
 						<div class="wthree_banner_btm_pos">
-							<h3>introducing <span>best store</span> for <i>groceries</i></h3>
+							<h3>Productos <span>totalmente</span><i>a tu alcance</i></h3>
 						</div>
 					</div>
 				</div>
@@ -134,7 +101,7 @@
 					<div class="wthree_banner_bottom_left_grid">
 						<img src="{% static 'core/images/6.jpg' %}" alt=" " class="img-responsive" />
 						<div class="wthree_banner_btm_pos1">
-							<h3>Save <span>Upto</span> $10</h3>
+							<h3>A solo<span>por</span> $10</h3>
 						</div>
 					</div>
 				</div>
@@ -145,20 +112,20 @@
 <!-- top-brands -->
 	<div class="top-brands">
 		<div class="container">
-			<h3>Hot Offers</h3>
+			<h3>Productos disponibles</h3>
 			<div class="agile_top_brands_grids">
 				{% for product in products %}
 				<div class="col-md-3 top_brand_left">
 					<div class="hover14 column">
 						<div class="agile_top_brand_left_grid">
-							<div class="tag"><img src="{% static 'core/images/tag.png' %}" alt=" " class="img-responsive" /></div>
+							
 							<div class="agile_top_brand_left_grid1">
 								<figure>
 									<div class="snipcart-item block" >
 										<div class="snipcart-thumb">
-											<a href="single.html"><img title=" " alt=" " src="{{product.image.url}}" /></a>		
+											<a href="{% url 'productsdetail' product.id %}"><img title=" " alt=" " src="{{product.image.url}}" /></a>		
 											<p>{{product.name}}</p>
-											<h4>{{product.price}}<span>$10.00</span></h4>
+											<h4>{{product.price}}<span></span></h4>
 										</div>
 										<div class="snipcart-details top_brand_home_details">
 											<form action="{% url 'checkout' %}" method="post">
@@ -193,69 +160,64 @@
 <!-- fresh-vegetables -->
 	<div class="fresh-vegetables">
 		<div class="container">
-			<h3>Top Products</h3>
-			<div class="w3l_fresh_vegetables_grids">
-				<div class="col-md-3 w3l_fresh_vegetables_grid w3l_fresh_vegetables_grid_left">
-					<div class="w3l_fresh_vegetables_grid2">
+			
+			<div class="events">
+				<h3>Principales publicaciones</h3>
+			<div class="events-bottom">
+			{% for post in posts %}
+				<div class="col-md-2 events_bottom_left1">
+						<div class="events_bottom_left1_grid">
+							<h4>{{post.published|date:" d "}}</h4>
+							<p>{{post.published|date:" M Y "}}</p>
+						</div>
+				</div>
+				<div class="col-md-4 w3l_banner_nav_right_banner3_btml">
+					<div class="view view-tenth">
+						<img src="{{post.image.url}}" alt=" " class="img-responsive"/>
+						<div class="mask">
+							<h4>{{post.title}}</h4>
+						</div>
+					</div>
+					<div class="col-md-8 events_bottom_left2">	
+						
+						<h4>{{post.title}}</h4>
 						<ul>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.html">All Brands</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.html">Vegetables</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="vegetables.html">Fruits</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="drinks.html">Juices</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="pet.html">Pet Food</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="bread.html">Bread & Bakery</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="household.html">Cleaning</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.html">Spices</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.html">Dry Fruits</a></li>
-							<li><i class="fa fa-check" aria-hidden="true"></i><a href="products.html">Dairy Products</a></li>
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.published|time:"H:i"}}</li>
+							<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">{{post.author}}</a></li>
 						</ul>
+						<p>{{post.content}}</p>
 					</div>
 				</div>
-				<div class="col-md-9 w3l_fresh_vegetables_grid_right">
-					<div class="col-md-4 w3l_fresh_vegetables_grid">
-						<div class="w3l_fresh_vegetables_grid1">
-							<img src="{% static 'core/images/8.jpg' %}" alt=" " class="img-responsive" />
+				<!--<div class="col-md-6 events_bottom_left">
+					<div class="col-md-4 events_bottom_left1">
+						<div class="events_bottom_left1_grid">
+							<h4>{{post.published|date:" d "}}</h4>
+							<p>{{post.published|date:" M Y "}}</p>
 						</div>
 					</div>
-					<div class="col-md-4 w3l_fresh_vegetables_grid">
-						<div class="w3l_fresh_vegetables_grid1">
-							<div class="w3l_fresh_vegetables_grid1_rel">
-								<img src="{% static 'core/images/7.jpg' %}" alt=" " class="img-responsive" />
-								<div class="w3l_fresh_vegetables_grid1_rel_pos">
-									<div class="more m1">
-										<a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="w3l_fresh_vegetables_grid1_bottom">
-							<img src="{% static 'core/images/10.jpg' %}" alt=" " class="img-responsive" />
-							<div class="w3l_fresh_vegetables_grid1_bottom_pos">
-								<h5>Special Offers</h5>
-							</div>
+					<div class="view view-tenth">
+						<img src="{{post.image.url}}" alt=" " class="img-responsive" />
+						<div class="mask">
+							<h4>Bagah expres</h4>
+							<p>A tu cervicio</p>
 						</div>
 					</div>
-					<div class="col-md-4 w3l_fresh_vegetables_grid">
-						<div class="w3l_fresh_vegetables_grid1">
-							<img src="{% static 'core/images/9.jpg' %}" alt=" " class="img-responsive" />
-						</div>
-						<div class="w3l_fresh_vegetables_grid1_bottom">
-							<img src="{% static 'core/images/11.jpg' %}" alt=" " class="img-responsive" />
-						</div>
+					<div class="col-md-8 events_bottom_left2">	
+						<img src="{{post.image.url}}" alt=" " class="img-responsive" class="rounded"/>
+						<h4>{{post.title}}</h4>
+						<ul>
+							<li><i class="fa fa-clock-o" aria-hidden="true"></i>{{post.published|time:"H:i"}}</li>
+							<li><i class="fa fa-user" aria-hidden="true"></i><a href="#">{{post.author}}</a></li>
+						</ul>
+						<p>{{post.content}}</p>
 					</div>
-					<div class="clearfix"> </div>
-					<div class="agileinfo_move_text">
-						<div class="agileinfo_marquee">
-							<h4>get <span class="blink_me">25% off</span> on first order and also get gift voucher</h4>
-						</div>
-						<div class="agileinfo_breaking_news">
-							<span> </span>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
+				</div>-->
+			{% endfor %}	
 				<div class="clearfix"> </div>
 			</div>
+		
+<!-- //events -->
+		</div>
 		</div>
 	</div>
 <!-- //fresh-vegetables -->
