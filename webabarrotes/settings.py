@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'about.apps.AboutConfig',
     'blog',
     'core',
     'ckeditor',
@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'profiles',
     'products.apps.ProductsConfig',
     'pages.apps.PagesConfig',
+    'registration',
     'services.apps.ServicesConfig',
     'social.apps.SocialConfig',
-    
 ]
 
 MIDDLEWARE = [
@@ -157,3 +157,4 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '4ad32081f0d02c'
 EMAIL_HOST_PASSWORD = '03ecb24ecc80ad'
 EMAIL_PORT = '2525'
+

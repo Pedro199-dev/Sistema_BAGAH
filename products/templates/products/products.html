@@ -133,18 +133,18 @@
 											<h4>{{product.price}} <span>$5.00</span></h4>
 										</div>
 										<div class="snipcart-details">
-											<form action="#" method="post">
+											<form action="{% url 'checkout' %}" method="get">
 												<fieldset>
 													<input type="hidden" name="cmd" value="_cart" />
-													<input type="hidden" name="add" value="1" />
+													<input type="hidden" name="add" value="{{product.id}}" />
 													<input type="hidden" name="business" value=" " />
-													<input type="hidden" name="item_name" value="knorr instant soup" />
-													<input type="hidden" name="amount" value="3.00" />
-													<input type="hidden" name="discount_amount" value="1.00" />
+													<input type="hidden" name="item_name" value="{{product.name}}" />
+													<input type="hidden" name="amount" value="{{product.price}}" />
+													<!--<input type="hidden" name="discount_amount" value="1.00" />-->
 													<input type="hidden" name="currency_code" value="USD" />
 													<input type="hidden" name="return" value=" " />
 													<input type="hidden" name="cancel_return" value=" " />
-													<input type="submit" name="submit" value="Add to cart" class="button" />
+													<input type="submit" name="submit" value="Añadir al carrito" class="button" />
 												</fieldset>
 											</form>
 										</div>

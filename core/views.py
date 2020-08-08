@@ -7,8 +7,6 @@ def index(request):
     products = Product.objects.all()
     return render(request, "core/index.html", {'products':products})
 
-def about(request):
-    return render(request, "core/about.html")
 
 
 

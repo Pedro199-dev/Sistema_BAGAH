@@ -20,9 +20,13 @@ from profiles.urls import profiles_patterns
 from django.urls import path, include
 from django.conf import settings
 
+
+
 urlpatterns = [
     #Paths del core
     path('', include('core.urls')),
+    #Paths de productos
+    path('about/', include('about.urls')),
     #Paths de productos
     path('products/', include('products.urls')),
     #Paths de blog

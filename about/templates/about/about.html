@@ -63,33 +63,28 @@
 		</div>
 		<div class="w3l_banner_nav_right">
 <!-- about -->
+	{% for about in abouts %}
 		<div class="privacy about">
-			<h3>Acerca de nosotros</h3>
-			<p class="animi">BÁGAH EXPRESS, es una empresa dedicada a la compra y venta de productos de consumo diario, orientada en el servicio a domicilio, con entregas de muy buenos productos y con la mejor calidad en el menor tiempo posible. Que a través de sus meses de servicio desea convertirse a corto plazo  en un gran servicio innovador  más grandes del estado, para poder seguir distribuyendo, sus productos  con la calidad  de siempre.  </p>
+			<h3>{{about.title}}</h3>
+			<p class="animi">{{about.content}}</p>
 			<div class="agile_about_grids">
 				<div class="col-md-6 agile_about_grid_right">
-					<img src="{% static 'core/images/31.jpg' %}" alt=" " class="img-responsive" />
+					<img src="{{about.image.url}}" alt=" " class="img-responsive" />
 				</div>
 				<div class="col-md-6 agile_about_grid_left">
-					<ol>
-						<li>laborum et dolorum fuga</li>
-						<li>corrupti quos dolores et quas</li>
-						<li>est et expedita distinctio</li>
-						<li>deleniti atque corrupti quos</li>
-						<li>excepturi sint occaecati cupiditate</li>
-						<li>accusamus et iusto odio</li>
-					</ol>
+					{{about.content2}}
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
+	{% endfor %}
 <!-- //about -->
 		</div>
 		<div class="clearfix"></div>
 	</div>
 <!-- //banner -->
 <!-- team -->
-	<div class="team">
+	<!--<div class="team">
 		<div class="container">
 			<h3>Meet Our Amazing Team</h3>
 			<div class="agileits_team_grids">
@@ -136,10 +131,10 @@
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 <!-- //team -->
 <!-- testimonials -->
-	<div class="testimonials">
+	<!--<div class="testimonials">
 		<div class="container">
 			<h3>Testimonials</h3>
 				<div class="w3_testimonials_grids">
@@ -204,7 +199,7 @@
 					</script> 
 				</div>
 		</div>
-	</div>
+	</div>-->
 <!-- //testimonials -->
 </body>
 
