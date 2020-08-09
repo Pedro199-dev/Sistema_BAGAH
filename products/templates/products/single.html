@@ -1,7 +1,11 @@
 {% extends "core/base.html" %}
+
 {% load static %}
+
 {% block productview %}
+
 <!-- banner -->
+	
 	<div class="banner">
 		<div class="w3l_banner_nav_left">
 			<nav class="navbar nav_bottom">
@@ -61,6 +65,7 @@
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
 							<form action="#" method="post">
+							{% csrf_token %}
 								<fieldset>
 									<input type="hidden" name="cmd" value="_cart" />
 									<input type="hidden" name="add" value="1" />

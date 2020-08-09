@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'webabarrotes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'webabarrotes2',
+        'NAME': 'weababa1',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
