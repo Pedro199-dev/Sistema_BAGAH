@@ -9,7 +9,7 @@ django-allauth==0.36.0
 django-carton==1.2.1
 django-ckeditor==5.9.0
 django-js-asset==1.2.2
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 idna==2.7
 isort==4.3.21
 lazy-object-proxy==1.4.3
